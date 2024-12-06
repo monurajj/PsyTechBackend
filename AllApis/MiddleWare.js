@@ -6,10 +6,9 @@ const authenticate = (req, res, next) => {
     if (!token) {
         return res.status(401).json({ message: "Unauthorized" });
     }
-
     try {
         const decoded = jwt.verify(token, secretKey);
-        req.user = decoded; // Add user data to request
+        req.user = decoded;
         next();
     } catch (error) {
         res.status(403).json({ message: "Invalid token" });
