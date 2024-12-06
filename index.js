@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const allRoutes = require('./allapis/allroutes');
+const allRoutes = require('./AllApis/AllRoutes')
 
 const app = express();
 const PORT = 5001;
