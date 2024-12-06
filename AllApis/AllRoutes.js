@@ -14,7 +14,7 @@ router.post('/signup', async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = new User({ email, password: hashedPassword });
-        
+
         await user.save();
 
         res.status(201).json({ message: "User created successfully" });
@@ -36,7 +36,7 @@ router.post('/login', async (req, res) => {
 
         const token = jwt.sign({ id: user._id, email: user.email }, secretKey, { expiresIn: "1h" });
 
-        res.status(200).json({ message: "Login successful", token });
+        res.status(200).json({ message: "Login successful", token, email });
     } catch (error) {
         res.status(400).json({ message: "Error logging in", error });
     }
