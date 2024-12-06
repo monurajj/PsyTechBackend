@@ -12,6 +12,13 @@ router.post('/signup', async (req, res) => {
     const { email, password } = req.body;
 
     try {
+        // Check if email already exists
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: "User with this email already exists" });
+        }
+
+        // Hash the password and create a new user
         const hashedPassword = await bcrypt.hash(password, 10);
         const user = new User({ email, password: hashedPassword });
 
@@ -22,6 +29,7 @@ router.post('/signup', async (req, res) => {
         res.status(400).json({ message: "Error creating user", error });
     }
 });
+
 
 // Login route
 router.post('/login', async (req, res) => {
