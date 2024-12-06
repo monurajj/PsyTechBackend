@@ -41,14 +41,12 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// Add bookmark
+// Add bookmark for saving 
 router.post('/bookmarks', authenticate, async (req, res) => {
     const { stocks, link } = req.body;
-
     try {
         const user = await User.findById(req.user.id);
         if (!user) return res.status(404).json({ message: "User not found" });
-
         user.bookmarks.push({ stocks, link });
         await user.save();
 
