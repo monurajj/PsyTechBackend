@@ -10,7 +10,7 @@ app.use(express.json());
 // R1LaWKlMqfaqfEEE
 // Connect to MongoDB
 mongoose
-    .connect('mongodb+srv://monuk23csai:R1LaWKlMqfaqfEEE@psytech.r6qsw.mongodb.net/?retryWrites=true&w=majority&appName=Psytech', { useNewUrlParser: true, useUnifiedTopology: true })
+    .connect('mongodb+srv://monuk23csai:R1LaWKlMqfaqfEEE@psytech.r6qsw.mongodb.net/?retryWrites=true&w=majority&appName=Psytech')
     .then(() => console.log("Connected to MongoDB"))
     .catch(err => console.log("MongoDB connection error:", err));
 
